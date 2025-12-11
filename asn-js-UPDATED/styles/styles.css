@@ -1,0 +1,358 @@
+/************* your name: Zara Qadri
+
+INSTRUCTIONS:
+Comments starting with TO-DO have been included in this file to describe the needed styling: please translate these to the appropriate CSS declarations.
+
+Comments starting with TO-DO may be left in for reference or removed entirely: all other comments should be left as-is for ease of review.
+
+You are encouraged to improve any provided CSS by using modern units and increasing responsive design functionality. However you are not supposed to rewrite the entire file.
+
+***** colour palette: *****
+- mustard yellow (used for header, footer, and buttons): #E5AF42
+- cornflower blue (used for hover states): #4278e5
+
+*/
+:root{
+  --mustard: #E5AF42;
+  --cornflower: #4278e5;
+  --black: #000;
+  --max-width: 950px;
+  --container-padding: 20px;
+}
+
+
+/************* site defaults *************/
+body {
+  width: 950px;
+  margin: 0 auto;
+  font-family: "Montserrat", sans-serif;
+  line-height: 1.5;
+}
+
+* { box-sizing: border-box; }
+body {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  font-family: "Montserrat", sans-serif;
+  line-height: 1.5;
+  padding: 0 var(--container-padding);
+  color: #111;
+  background: #fff;
+}
+
+/* TO DO: all elements with the .flex class applied are to be made into flex-box containers. */
+
+.flex {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/************* site-wide text styling *************/
+
+/* TO DO:
+    - first-level headings use clamp and have a desktop size 48px, centered vertically and horizontally in the available space.
+    - 2nd-level headings have a desktop font size of 36px, and 12px of space below also clamped.
+    - any element with the .large-text class has a font size of 24px.
+    - any element with the .fake-button class will have a background colour of mustard yellow (see colour palette above), be center aligned, with a line-height of 3 and a solid black border that is 1px wide.
+    - anchor tags should be clearly identifiable. use color and or underline with hover states to communicate interactivity.
+    - anchor tag fake buttons should not have an underline in them
+    - the hover-state of .fake-button and .blue-hover elements will:
+        - add an underline,
+        - set the background-colour to cornflower blue (see colour palette above),
+        - change the text colour to white, and
+        - change the cursor to pointer.
+*/
+
+h1 {
+  font-weight: 600;
+  font-size: clamp(28px, 5vw, 48px); /* desktop ~48 */
+  margin: 0;
+  display: inline-block;
+}
+
+h2 {
+  font-weight: 600;
+  font-size: clamp(22px, 3.2vw, 36px); /* desktop ~36 */
+  margin-bottom: clamp(8px, 1.1vw, 12px);
+  line-height: 1;
+}
+
+.large-text { font-size: 24px; }
+
+.fake-button {
+  display: inline-block;
+  background-color: var(--mustard);
+  text-align: center;
+  line-height: 3; /* vertical rhythm for buttons */
+  border: 1px solid var(--black);
+  text-decoration: none;
+  padding: 0 14px;
+  min-width: 140px;
+  cursor: default;
+  user-select: none;
+}
+
+a { color: inherit; text-decoration: underline; }
+a:hover { text-decoration: none; }
+
+a.fake-button { text-decoration: none; color: inherit; }
+
+.blue-hover:hover, .fake-button.blue-hover:hover {
+  text-decoration: underline;
+  background-color: var(--cornflower);
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 180ms ease, color 180ms ease;
+}
+
+.clicked {
+  background-color: var(--mustard) !important;
+  color: #000 !important;
+  text-decoration: none !important;
+}
+
+
+/************* header/footer styling *************/
+
+/* TO DO:
+    - the header and footer will be the same mustard-yellow as the buttons.
+    - the header has a max height of 150px.
+    - implement a responsive navbar in the header. The icon + title should be aligned to the left with responsive spacing
+    - create a navbar for the other pages that is right aligned. apply flexbox and make sure there is no overlap at a mobile screen width
+    - there will be 25px of space between the header and main, and 50px of space between main and footer.
+    - the footer should have a max height of about 60px, have a font-weight of 200, and the text within will be centered vertically and horizontally to the browser window.
+*/
+
+header, footer {
+  width: 100vw; /* extend full width to edges as required */
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  background: var(--mustard);
+  padding: 12px clamp(12px, 3vw, 24px);
+  box-sizing: border-box;
+  color: #000;
+}
+
+.header-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: inherit;
+}
+
+header { max-height: 150px; }
+
+nav.site-nav {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+nav.site-nav a {
+  padding: 8px 12px;
+  border-radius: 6px;
+  text-decoration: none;
+  color: #000;
+  font-weight: 600;
+}
+nav.site-nav a:hover { background: rgba(0,0,0,0.06); }
+
+main { margin-top: 25px; margin-bottom: 50px; max-width: var(--max-width); margin-left: auto; margin-right: auto; padding: 0 var(--container-padding); }
+
+footer {
+  max-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 200;
+  text-align: center;
+  padding: 16px clamp(12px, 3vw, 24px);
+}
+
+
+/************* index page *************/
+
+/* TO-DO:
+    - this is a 2-column layout: text on the left, and an image on the right. The image should be have a responsive width using 300px as the approximate value. use flexbox, gap, margin, and padding to govern space around. Aim for 25-50px.
+    - the h2 on this page will have a line-height equal to the font size.
+    - each paragraph on this page will have 12px of space beneath it.
+    - each fake-button on this page will have a responsive width of about 250px.  Use flexbox to manage  space between them.
+    - the pair of fake-buttons will be centered on the page. HINT: can calculate the required margin to make them appear to be centered.
+*/
+
+main.index .flex {
+  gap: 32px;
+  align-items: center;
+}
+
+.about-us { flex: 1 1 420px; }
+
+main.index img {
+  width: clamp(180px, 33vw, 320px);
+  height: auto;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+main.index h2 { line-height: 1; }
+
+main.index p { margin-bottom: 12px; }
+
+main.index .flex + .flex {
+  justify-content: center;
+  gap: 20px;
+  margin-top: 18px;
+}
+
+main.index .fake-button { min-width: 250px; }
+
+
+/************* bookings page *************/
+
+/* TO-DO:
+    - the contents of the booking-page will be 600px wide at a desktop screen size, and all content centered within the available space.
+    - text will have a clamped size of around 18px for desktop.
+    - there will be 12px of space below the day-selectors, and 20px of space between each list item. List items are 60px wide.
+    - List items & the small-button elements will have a background blur or black border on hover to indicate clickability. Small-buttons will also have around 5px of space between the border and the content.
+    - items tagged with .top-margin will have 24 px of space above, and 12px of space below.
+    - the "clear days" button will responsive around 200px wide.
+    - any element tagged with the .clicked class will turn mustard yellow. **This will be very important for your JavaScript.**
+    - all items within the page will be centered within their available space.
+
+*/
+
+.booking-page {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+ul.day-selector {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  padding: 12px 0;
+  margin: 8px 0 12px 0;
+  flex-wrap: wrap;
+}
+ul.day-selector li {
+  list-style: none;
+  padding: 10px 14px;
+  border: 1px solid var(--black);
+  min-width: 60px;
+  text-align: center;
+  border-radius: 6px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.small-button {
+  display: inline-block;
+  padding: 6px 10px;
+  border: 1px solid var(--black);
+  border-radius: 6px;
+  line-height: 1.2;
+  cursor: pointer;
+  margin-left: 6px;
+}
+
+ul.day-selector li.blue-hover:hover,
+.small-button.blue-hover:hover {
+  box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+}
+
+.top-margin { margin-top: 24px; margin-bottom: 12px; }
+
+#calculated-cost { font-weight: 600; }
+
+#clear-button { min-width: 200px; display: inline-block; margin-top: 12px; }
+
+/************* contact page *************/
+/* TO DO:
+    - the main section of the .contact page will use viewport height units effectively, and be centered.
+    - the contents will be 2 columns: the labels column is 150px wide and right-aligned, and the input column is 300px wide. There will be 24px of space between the columns, and the pair of columns will be centered on the page.
+    - the textarea element will be 150px tall. use responsive units and layout values to optimize between mobile and desktop screen sizes
+    - all form input, textarea, and and button elements will have the same font as the rest of the page, a line-height of 24px, a font-size of 16px, and the same border as other buttons on the site. There will be 24px of space below each of these elements.
+    - the edges of the button will line up exactly with the text-area element. HINT: time for some math!
+*/
+
+.contact {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 28px;
+}
+
+.contact form .flex {
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.contact label {
+  width: 150px;
+  text-align: right;
+  padding-right: 12px;
+  font-weight: 500;
+}
+
+.contact input[type="text"],
+.contact input[type="email"],
+.contact textarea {
+  width: 300px;
+  padding: 6px 8px;
+  line-height: 24px;
+  font-size: 16px;
+  font-family: inherit;
+  border: 1px solid var(--black);
+  border-radius: 4px;
+}
+
+.contact textarea { height: 150px; resize: vertical; }
+
+.contact form .flex + .flex { margin-top: 12px; }
+
+.contact button.fake-button {
+  margin-left: calc(150px + 24px); 
+  width: 300px;
+  display: inline-block;
+}
+
+img { max-width: 100%; display: block; }
+
+header img {
+  width: 56px;
+  height: auto;
+}
+
+@media (max-width: 720px) {
+  body { padding: 0 12px; }
+  .header-inner { flex-direction: column; align-items: flex-start; gap: 8px; }
+  nav.site-nav { justify-content: flex-start; gap: 8px; width: 100%; flex-wrap: wrap; }
+  .contact label { width: 100%; text-align: left; padding-right: 0; }
+  .contact input, .contact textarea { width: 100%; }
+  .contact button.fake-button { margin-left: 0; width: 100%; }
+  header { padding: 12px; }
+  footer { padding: 12px; }
+  main.index .flex { flex-direction: column; gap: 18px; }
+  ul.day-selector { gap: 8px; }
+}
